@@ -24,6 +24,15 @@ idea {
     }
 }
 
+configurations.all {
+    resolutionStrategy.dependencySubstitution {
+        substitute(module("javax.annotation:javax.annotation-api"))
+                .using(module("jakarta.annotation:jakarta.annotation-api"))
+                .because("javax.annotation-api is considered deprecated and has been replaced by" +
+                        "jakarta.annotation-api")
+    }
+}
+
 
 subprojects {
     val projectToConf = this
